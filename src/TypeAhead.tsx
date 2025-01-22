@@ -7,26 +7,13 @@ import './TypeAhead.css'
 import {
   type InternalTypedDocument,
   type Orama,
-  type RawData,
   type Results,
   type SearchParams,
-  create,
-  load,
   search,
 } from '@orama/orama'
+import { restore } from '@orama/plugin-data-persistence'
 import { type ChangeEvent, useEffect, useState } from 'react'
 import type { Schema } from './types'
-
-async function loadDbFromJson(data: RawData): Promise<Orama<Schema>> {
-  const db = await create({
-    schema: {
-      __placeholder: 'string',
-    },
-  })
-  await load(db, data)
-
-  return db as unknown as Orama<Schema>
-}
 
 export type TypeAheadProps = {
   indexUrl: string
@@ -58,8 +45,8 @@ export function TypeAhead(props: TypeAheadProps) {
           accept: 'application/json; charset=utf-8',
         },
       })
-      const data = await resp.json()
-      const db = await loadDbFromJson(data)
+      const data = await resp.text()
+      const db = await restore<Orama<Schema>>('json', data)
       setDb(db)
       setIsInitializing(false)
     }
@@ -90,6 +77,7 @@ export function TypeAhead(props: TypeAheadProps) {
     setSearchText(document.name)
     setSearchResults(null)
     if (props.onSelect) {
+      console.log(document)
       props.onSelect(document)
     }
   }

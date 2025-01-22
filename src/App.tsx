@@ -2,7 +2,8 @@ import { useState } from 'react'
 import Station from './Station'
 import { TypeAhead } from './TypeAhead'
 
-const API_BASE_URL = `${process.env.BASE || '/'}api/}`
+const API_BASE_URL = `${import.meta.env.BASE_URL}api/`
+console.log(API_BASE_URL)
 
 function App() {
   const [stationId, setStationId] = useState<string | null>(null)

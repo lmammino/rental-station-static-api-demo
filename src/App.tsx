@@ -3,7 +3,6 @@ import Station from './Station'
 import { TypeAhead } from './TypeAhead'
 
 const API_BASE_URL = `${import.meta.env.BASE_URL}api/`
-console.log(API_BASE_URL)
 
 function App() {
   const [stationId, setStationId] = useState<string | null>(null)
@@ -28,7 +27,7 @@ function App() {
         onSelect={(data) => {
           setStationId(data.id)
         }}
-        indexUrl={`${API_BASE_URL}_search.json.gz`}
+        indexUrl={`${API_BASE_URL}_search.json`}
       />
 
       {stationId && (

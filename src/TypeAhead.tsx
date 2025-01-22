@@ -54,7 +54,7 @@ export function TypeAhead(props: TypeAheadProps) {
       setIsInitializing(true)
       const resp = await fetch(props.indexUrl, {
         headers: {
-          'accept-encoding': 'gzip',
+          // 'accept-encoding': 'gzip', // (not supported by GitHub pages)
           accept: 'application/json; charset=utf-8',
         },
       })

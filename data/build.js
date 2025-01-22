@@ -42,9 +42,14 @@ for (const r of data) {
 }
 
 const JSONIndex = await persist(searchIndex, 'json')
-// compress the index with gzip
-const compressedIndex = await gzipPromise(JSONIndex)
-
-const filename = join(target, '_search.json.gz')
-await writeFile(filename, compressedIndex)
+const filename = join(target, '_search.json')
+await writeFile(filename, JSONIndex)
 console.log(filename)
+
+// compress the index with gzip
+// NOTE: GitHub page does not support Accept-Encoding: gzip
+//   so we will actually use the uncompressed file in the demo app
+//   if you are using another CDN consider using the compressed file instead
+const compressedIndex = await gzipPromise(JSONIndex)
+await writeFile(`${filename}.gz`, compressedIndex)
+console.log(`${filename}.gz`)

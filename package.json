@@ -24,6 +24,7 @@
     "@ngneat/falso": "^7.3.0",
     "@orama/cuid2": "^2.2.3",
     "@types/leaflet": "^1.9.16",
+    "@types/node": "^22.10.7",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",

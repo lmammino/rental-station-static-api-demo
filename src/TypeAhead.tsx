@@ -4,17 +4,17 @@
  * from a component library instead!
  */
 import './TypeAhead.css'
-import { type ChangeEvent, useEffect, useState } from 'react'
 import {
-  create,
   type InternalTypedDocument,
-  load,
   type Orama,
   type RawData,
   type Results,
-  search,
   type SearchParams,
+  create,
+  load,
+  search,
 } from '@orama/orama'
+import { type ChangeEvent, useEffect, useState } from 'react'
 import type { Schema } from './types'
 
 async function loadDbFromJson(data: RawData): Promise<Orama<Schema>> {

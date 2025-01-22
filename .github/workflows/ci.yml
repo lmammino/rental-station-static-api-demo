@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Build and deploy
 
 on:
   # Runs on pushes targeting the default branch
@@ -38,6 +38,8 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm i
+      - name: Lint
+        run: pnpm run lint
       - name: Build
         run: pnpm run build
         env:

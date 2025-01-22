@@ -1,10 +1,10 @@
 import { readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import { gzip } from 'node:zlib'
 import { promisify } from 'node:util'
-import { mkdirp } from 'mkdirp'
+import { gzip } from 'node:zlib'
 import { create, insert } from '@orama/orama'
 import { persist } from '@orama/plugin-data-persistence'
+import { mkdirp } from 'mkdirp'
 
 const gzipPromise = promisify(gzip)
 
